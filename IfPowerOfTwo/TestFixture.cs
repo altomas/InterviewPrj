@@ -12,18 +12,22 @@ namespace IfPowerOfTwo
     public class Tests
     {
       [Test]
-      public void Test()
-      {
-        int undertest = 2;
-        WriteBits(undertest);
-        Console.WriteLine();
-        WriteBits ( (undertest - 1) >> 1);
-        Console.WriteLine();
-        WriteBits(((undertest - 1) >> 1) + 1);
-        Console.WriteLine();
-        WriteBits((((undertest - 1) >> 1) + 1) << 1);
-        Assert.IsTrue((((undertest - 1) >> 1) + 1) << 1 == undertest);
+      [TestCase(0, true)]
+      [TestCase(1, true)]
+      [TestCase(2, true)]
+      [TestCase(4, true)]
+      [TestCase(8, true)]
+      [TestCase(16, true)]
 
+      [TestCase(3, false)]
+      [TestCase(5, false)]
+      [TestCase(22, false)]
+      [TestCase(88, false)]
+      [TestCase(63, false)]
+
+      public void Test(int undertest, bool res)
+      {
+        Assert.AreEqual(res, ((undertest - 1) & undertest) == 0);
       }
 
       public void WriteBits(int num)
@@ -39,13 +43,6 @@ namespace IfPowerOfTwo
         Console.Write(bit);
       }
 
-      [Test]
-      public void Test2()
-      {
-        int undertest = 100;
-
-        Assert.IsTrue((undertest ^ undertest) == 0);
-      }
 
       [Test]
       public void GarageOn32Cars()
