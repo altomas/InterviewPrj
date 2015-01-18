@@ -30,7 +30,6 @@ namespace UnitTests
                 var undertest = new ReverseWords(val.arg);
 
                 RunWithMeasuring(() => { Assert.AreEqual(val.res, undertest.GetReversedStackUsage()); });
-                RunWithMeasuring(() => { Assert.AreEqual(val.res, undertest.GetReversedStackUsageOptimized()); });
                 RunWithMeasuring(() => { Assert.AreEqual(val.res, undertest.GetReversedMemoryOptimization()); });
             });
 

@@ -76,8 +76,13 @@ namespace _7_ReverseWords
 
 
 
-    public string GetReversedStackUsageOptimized()
+    public string GetReversedStackUsage()
     {
+      // straight forward alghorithm
+      // This logic is not effision because requires additional memomory to store structs of  words and one more instance of sentence with new words order.
+      // Complexity is 
+
+
       if (this.sentence == null)
       {
         return null;
@@ -115,51 +120,7 @@ namespace _7_ReverseWords
       return new string(result.ToArray());
     }
 
-    public string GetReversedStackUsage()
-    {
-      if (this.sentence == null)
-      {
-        return null;
-      }
-
-
-      char[] result = new char[this.sentence.Length];
-
-      Stack<Queue<char>> stack = new Stack<Queue<char>>();
-
-      Queue<char> word = new Queue<char>();
-
-      foreach (var crt in this.sentence)
-      {
-        if (crt == ' ')
-        {
-          stack.Push(word);
-          word = new Queue<char>();
-          word.Enqueue(crt);
-          stack.Push(word);
-          word = new Queue<char>();
-          continue;
-        }
-
-        word.Enqueue(crt);
-      }
-
-      stack.Push(word);
-
-      int index = 0;
-
-      while (stack.Count > 0)
-      {
-        word = stack.Pop();
-
-        while (word.Count > 0)
-        {
-          result[index++] = word.Dequeue();
-        }
-      }
-
-      return new string(result);
-    }
+    
   }
 }
 
