@@ -29,10 +29,27 @@ namespace UnitTests
             {
                 var undertest = new ReverseWords(val.arg);
 
-                RunWithMeasuring(() => { Assert.AreEqual(val.res, undertest.GetReversedStackUsage()); });
-                RunWithMeasuring(() => { Assert.AreEqual(val.res, undertest.GetReversedMemoryOptimization()); });
+                Assert.AreEqual(val.res, undertest.GetReversedStackUsage());
+                Assert.AreEqual(val.res, undertest.GetReversedMemoryOptimization());
             });
 
+        }
+
+        [TestMethod]
+        public void PerformanceTest()
+        {
+            var str = "Test";
+
+
+            for (int i = 0; i < 1000; i++)
+            {
+                str += " Test";
+            }
+
+            var undertest = new ReverseWords(str);
+
+            RunWithMeasuring(() => { undertest.GetReversedMemoryOptimization(); });
+            RunWithMeasuring(() => { undertest.GetReversedStackUsage(); });
         }
 
         public static void RunWithMeasuring(Action actionToRun)
