@@ -17,20 +17,19 @@ namespace UnitTests
 
             var cases = new[] { 
              
-             new {arg = " My test sentense ",  res = " sentense test My "},
+              new {arg = " My test sentense  ",  res = "  sentense test My "},
+              new {arg = " My test sentense ",  res = " sentense test My "},
               new {arg = "  My test sentense ",  res = " sentense test My  "},
-               new {arg = " My test sentense  ",  res = "  sentense test My "},
-                new {arg = (string)null,  res = (string)null},
-                 new {arg = "",  res = ""},
-                  new {arg = " ",  res = " "},
+              new {arg = (string)null,  res = (string)null},
+              new {arg = "",  res = ""},
+              new {arg = " ",  res = " "},
                 };
 
             cases.ToList().ForEach((val) =>
             {
-                var undertest = new ReverseWords(val.arg);
-
-                Assert.AreEqual(val.res, undertest.GetReversedStackUsage());
-                Assert.AreEqual(val.res, undertest.GetReversedMemoryOptimization());
+                Assert.AreEqual(val.res, new ReverseWords(val.arg).GetReversedStackUsage());
+                Assert.AreEqual(val.res, new ReverseWords(val.arg).GetReversedBadMemoryOptimization());
+                Assert.AreEqual(val.res, new ReverseWords(val.arg).GetReverseSmartOne());
             });
 
         }
@@ -41,15 +40,14 @@ namespace UnitTests
             var str = "Test";
 
 
-            for (int i = 0; i < 1000; i++)
+            for (int i = 0; i < 100000; i++)
             {
                 str += " Test";
             }
 
-            var undertest = new ReverseWords(str);
-
-            RunWithMeasuring(() => { undertest.GetReversedMemoryOptimization(); });
-            RunWithMeasuring(() => { undertest.GetReversedStackUsage(); });
+            RunWithMeasuring(() => { new ReverseWords(str).GetReversedBadMemoryOptimization(); });
+            RunWithMeasuring(() => { new ReverseWords(str).GetReversedStackUsage(); });
+            RunWithMeasuring(() => { new ReverseWords(str).GetReverseSmartOne(); });
         }
 
         public static void RunWithMeasuring(Action actionToRun)

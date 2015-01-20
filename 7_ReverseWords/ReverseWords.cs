@@ -6,7 +6,8 @@ using System.Threading.Tasks;
 
 namespace _7_ReverseWords
 {
-    using Microsoft.VisualStudio.TestTools.UnitTesting;
+  using System.ComponentModel;
+  using Microsoft.VisualStudio.TestTools.UnitTesting;
     using System.Diagnostics;
 
   public class ReverseWords
@@ -19,14 +20,104 @@ namespace _7_ReverseWords
       this.sentence = sentence == null ? null : sentence.ToCharArray();
     }
 
+
+
+    public string GetReverseSmartOne()
+    {
+      if (this.sentence == null)
+      {
+        return null;
+      }
+
+      //Get a mirror
+      int head = 0;
+      int tail = this.sentence.Length - 1;
+      
+
+      this.ReverseOrder(head, tail);
+
+      return new string(this.sentence);
+    }
+
+    private void ReverseOrder(int head, int tail)
+    {
+      // Compexity is 2N 
+      // memory consumption: a few variables -  O(1) space
+
+      int hWordBegin = head;
+      int tWordend = tail;
+      
+      while (head <= tail)
+      {
+        var crtHead = this.sentence[head];
+        var crtTail = this.sentence[tail];
+
+        this.sentence[head] = crtTail;
+        this.sentence[tail] = crtHead;
+
+
+        if (crtTail == ' ')
+        {
+          this.Swap(hWordBegin, head - 1);
+          hWordBegin = head + 1;
+
+          if (tail - head == 1)
+          {
+            this.Swap(tail, tWordend);
+            return;
+          }
+        }
+        
+        if (crtHead == ' ')
+        {
+          this.Swap(tail + 1, tWordend);
+          tWordend = tail - 1;
+
+          if (tail - head == 1)
+          {
+            this.Swap(hWordBegin, head);
+            return;
+          }
+        }
+
+        if (tail == head)
+        {
+          this.Swap(hWordBegin, head);
+          this.Swap(tail, tWordend);
+          return;
+        }
+
+        head++;
+        tail--;
+      }
+    }
+
+
+    private void Swap(int head, int tail)
+    {
+      while (head < tail)
+      {
+        var crtHead = this.sentence[head];
+        var crtTail = this.sentence[tail];
+
+        this.sentence[head] = crtTail;
+        this.sentence[tail] = crtHead;
+
+        head++;
+        tail--;
+      }
+    }
+
     enum Direction 
     {
         left = 0,
         right= 2
     }
 
-    public string GetReversedMemoryOptimization()
+    public string GetReversedBadMemoryOptimization()
     {
+      // Compexity is quadratic!!!! - very bad
+
         if (this.sentence == null)
         {
             return null;
@@ -38,7 +129,7 @@ namespace _7_ReverseWords
         while (head < tail)
         { 
             var rightcrt = this.MoveAndPullCrt(this.sentence, head, Direction.right); 
-            var leftcrt =  this.MoveAndPullCrt(this.sentence, tail, Direction.left);
+            var leftcrt = this.MoveAndPullCrt(this.sentence, tail, Direction.left);
 
             this.sentence[head] = leftcrt;
             this.sentence[tail] = rightcrt;
@@ -80,7 +171,8 @@ namespace _7_ReverseWords
     {
       // straight forward alghorithm
       // This logic is not effision because requires additional memomory to store structs of  words and one more instance of sentence with new words order.
-      // Complexity is 
+      // Complexity of algorithm is O(2N) but without taking into account of Stack and Queue implementation - so finaly it can be near to quadratic.
+      // beside problems with extra memory allocation
 
 
       if (this.sentence == null)
