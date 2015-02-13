@@ -23,6 +23,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CountOncesTests", "CountOnc
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FindLowestCommon", "FindLowestCommon\FindLowestCommon.csproj", "{5F6BABF6-CC01-4688-A7E9-DC4C45D37855}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HorizontalLinks", "HorizontalLinks\HorizontalLinks.csproj", "{23C6B9F2-7FEC-4475-B030-C10D0B3F1A41}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -69,6 +71,10 @@ Global
 		{5F6BABF6-CC01-4688-A7E9-DC4C45D37855}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{5F6BABF6-CC01-4688-A7E9-DC4C45D37855}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{5F6BABF6-CC01-4688-A7E9-DC4C45D37855}.Release|Any CPU.Build.0 = Release|Any CPU
+		{23C6B9F2-7FEC-4475-B030-C10D0B3F1A41}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{23C6B9F2-7FEC-4475-B030-C10D0B3F1A41}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{23C6B9F2-7FEC-4475-B030-C10D0B3F1A41}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{23C6B9F2-7FEC-4475-B030-C10D0B3F1A41}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

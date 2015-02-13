@@ -1,9 +1,4 @@
-﻿// --------------------------------------------------------------------------------------------------------------------
-// <copyright file="ConnectionsFinder.cs" company="Sitecore A/S">
-//   Copyright (C) 2010 by Sitecore A/S
-// </copyright>
-// --------------------------------------------------------------------------------------------------------------------
-
+﻿
 namespace FindLowestCommon.SearchLogic
 {
   using System.Collections.Generic;
