@@ -1,0 +1,76 @@
+﻿.main {
+    text-align: center;
+    font-family: 'Arial Unicode MS';
+    font-size: small;
+    margin: 50px;
+}
+
+.title {
+    text-align: left;
+}
+
+.title .left {
+    float: left;
+}
+
+.title .right {
+    float: right;
+    font-size: smaller;
+}
+
+.average {
+    text-align: center;
+    font-size:medium;
+}
+
+.chart {
+    display: inline-block;
+    height: 30px;
+}
+
+.currentState {
+    font-size:smaller;
+    border: solid 1px grey;
+    border-top: solid 0px grey;
+}
+
+.currentState span {
+    margin: 0 5px;
+}
+
+.dailyReport {
+   border: solid 1px grey;
+   border-top: solid 0px grey;
+   
+}
+
+.detailed {
+
+}
+
+.dashboard {
+   display: inline-block;
+   text-align: center;
+   margin: 0 auto;
+}
+
+/* this block of styles is a threshold to setup appropriate style for percentage values in dashboard 
+        to add one more threshold simply add one more class '.less_then_xxx' where xxx is a number in percent
+    
+    Example: adding  .less_then_50 { color: blue; } means all percents in dasboard with value less or equal 50 will be blue. 
+}
+*/
+.less_then_100 {
+    color: green;
+    text-decoration:underline;
+}
+
+.less_then_70 {
+    color: orange;
+    text-decoration:underline;
+}
+
+.less_then_40 {
+    color: red;
+   text-decoration:underline;
+}

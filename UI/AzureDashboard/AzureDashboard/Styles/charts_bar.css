@@ -1,0 +1,18 @@
+﻿.chart_container {
+    margin: 0 auto;
+    height: inherit;
+    vertical-align: bottom;
+}
+
+.chart_bar {
+    height: inherit;
+    height: 100%;
+    float: left;
+    margin: 0 2px;
+    background-color: blue;
+}
+
+.chart_bar_content {
+    width: 10px;
+    background-color: white;
+}

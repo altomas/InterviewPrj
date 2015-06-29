@@ -1,0 +1,69 @@
+﻿@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Index</title>
+    <link rel="stylesheet" type="text/css" href="styles/BackupDashboard.css">
+    <link rel="stylesheet" href="styles/charts_bar.css">
+    
+    <script src="http://ajax.aspnetcdn.com/ajax/jQuery/jquery-1.11.3.min.js"></script>
+    <script type="text/javascript" src="js/Dashboard.js"></script>
+    <script type="text/javascript" src="js/chart_bar.js"></script>
+   
+</head>
+<body>
+    <script type="text/javascript">
+
+        $(document).ready(function () {
+
+            // to avoid additional request on server, initial data added during page rendering
+            var currentState = @( new HtmlString(ViewBag.ReportData.ToString()));
+            var last7days = @( new HtmlString(ViewBag.DailyReportData.ToString()));
+            $('.dashboard .currentState').backupDashboard(currentState.Statistics);
+            $('.dashboard .dailyReport .chart').chart(last7days.Statistics, { gridSize: 100 });
+            $('.reportPeriod').append(showReportPeriod(currentState))
+
+        });
+
+    </script>
+    
+    <div class="main">
+        <div class="title">
+            <div class="left">Availability &#128269;</div>
+            <div class="right">@(ViewBag.ReportPeriodInfo)  &#x1f6c8;</div>
+            <div style="clear:both"></div>
+        </div>
+        <div class="dashboard">
+            <h3>Uptime</h3>
+            <div class="currentState">
+
+            </div>
+            <div class="dailyReport">
+                <div class="chart"></div>
+            </div>
+        </div>
+    </div>
+
+    <h1>Description</h1>
+    <p>
+        You can setup as many thresholds values as you want via css configuration. Just change value nearby class name .if_less_then_xxx, where xxx is desired threshold value in percent.
+        <pre>
+        .less_then_100 {
+            color: green;
+        }
+        .less_then_99 {
+            color: orange;
+        }
+        .less_then_97 {
+            color: red;
+        }
+        </pre>
+    </p>
+
+</body>
+</html>
