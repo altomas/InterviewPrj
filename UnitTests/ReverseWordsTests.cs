@@ -14,7 +14,7 @@ namespace UnitTests
         [TestMethod]
         public void ReverseWordsTest()
         {
-
+            // Initialize
             var cases = new[] { 
              
               new {arg = " My test sentense  ",  res = "  sentense test My "},
@@ -24,6 +24,7 @@ namespace UnitTests
               new {arg = "",  res = ""},
               new {arg = " ",  res = " "},
                 };
+
 
             cases.ToList().ForEach((val) =>
             {
