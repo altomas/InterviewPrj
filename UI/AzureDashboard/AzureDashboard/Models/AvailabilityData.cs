@@ -1,16 +1,48 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
+﻿// --------------------------------------------------------------------------------------------------------------------
+// <copyright file="AvailabilityData.cs" company="Sitecore A/S">
+//   Copyright (C) 2010 by Sitecore A/S
+// </copyright>
+// --------------------------------------------------------------------------------------------------------------------
 
 namespace AzureDashboard.Models
 {
-    public class AvailabilityData
+  /// <summary>
+  /// The availability data.
+  /// </summary>
+  public class AvailabilityData
+  {
+    #region Enums
+
+    /// <summary>
+    /// The period type enum.
+    /// </summary>
+    public enum PeriodTypeEnum
     {
-        public enum PeriodTypeEnum { Hour, Day }
+      /// <summary>
+      /// The hour.
+      /// </summary>
+      Hour, 
 
-        public double[] Statistics { get; set; }
-
-        public PeriodTypeEnum PeriodType { get; set; }
+      /// <summary>
+      /// The day.
+      /// </summary>
+      Day
     }
+
+    #endregion
+
+    #region Public properties
+
+    /// <summary>
+    /// Gets or sets the period type.
+    /// </summary>
+    public PeriodTypeEnum PeriodType { get; set; }
+
+    /// <summary>
+    /// Gets or sets the statistics.
+    /// </summary>
+    public double[] Statistics { get; set; }
+
+    #endregion
+  }
 }

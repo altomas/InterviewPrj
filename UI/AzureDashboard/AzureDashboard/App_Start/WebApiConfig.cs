@@ -1,19 +1,28 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web.Http;
-
-namespace AzureDashboard
+﻿namespace AzureDashboard
 {
-    public static class WebApiConfig
+  using System.Web.Http;
+
+  /// <summary>
+  ///   The web api config.
+  /// </summary>
+  public static class WebApiConfig
+  {
+    #region Public methods
+
+    /// <summary>
+    /// The register.
+    /// </summary>
+    /// <param name="config">
+    /// The config.
+    /// </param>
+    public static void Register(HttpConfiguration config)
     {
-        public static void Register(HttpConfiguration config)
-        {
-            config.Routes.MapHttpRoute(
-                name: "DefaultApi",
-                routeTemplate: "api/{controller}/{id}",
-                defaults: new { id = RouteParameter.Optional }
-            );
-        }
+      config.Routes.MapHttpRoute("DefaultApi", "api/{controller}/{id}", new
+      {
+        id = RouteParameter.Optional
+      });
     }
+
+    #endregion
+  }
 }

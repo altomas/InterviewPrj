@@ -26,18 +26,12 @@
             var last7days = @( new HtmlString(ViewBag.DailyReportData.ToString()));
             $('.dashboard .currentState').backupDashboard(currentState.Statistics);
             $('.dashboard .dailyReport .chart').chart(last7days.Statistics, { gridSize: 100 });
-            $('.reportPeriod').append(showReportPeriod(currentState))
-
         });
 
     </script>
     
     <div class="main">
-        <div class="title">
-            <div class="left">Availability &#128269;</div>
-            <div class="right">@(ViewBag.ReportPeriodInfo)  &#x1f6c8;</div>
-            <div style="clear:both"></div>
-        </div>
+        <div class="left">Availability &#128269;</div>
         <div class="dashboard">
             <h3>Uptime</h3>
             <div class="currentState">
@@ -47,23 +41,32 @@
                 <div class="chart"></div>
             </div>
         </div>
+        <div class="right">@(ViewBag.ReportPeriodInfo)  &#x1f6c8;</div>
     </div>
 
     <h1>Description</h1>
     <p>
-        You can setup as many thresholds values as you want via css configuration. Just change value nearby class name .if_less_then_xxx, where xxx is desired threshold value in percent.
+        You can setup as many thresholds values as you want via css configuration. Just change value nearby class name <span style="font-weight: bold; font-style: italic">.if_less_then_xxx_xx</span>, where xxx_xx is desired threshold value in percent.
         <pre>
-        .less_then_100 {
+        .less_then_100_00 {
             color: green;
         }
-        .less_then_99 {
+        .less_then_99_50 {
             color: orange;
         }
-        .less_then_97 {
+        .less_then_99_00 {
             color: red;
         }
         </pre>
     </p>
-
+    <p>
+        Report period can be set via configuration
+        
+        <pre>
+            &lt;appSettings&gt;
+            &lt;!-- Sets default dashboard reporting period in hours  e.g 7days = 168h--&gt;
+            &lt;add key="dashboard:DefaultReportPeriod" value="12" /&gt;
+        </pre>
+    </p>
 </body>
 </html>

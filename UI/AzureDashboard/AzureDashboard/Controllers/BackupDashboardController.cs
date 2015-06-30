@@ -1,76 +1,136 @@
-﻿using AzureDashboard.Models;
-using System;
-using System.Collections.Generic;
-using System.Configuration;
-using System.Linq;
-using System.Web;
-using System.Web.Mvc;
-using System.Web.Script.Serialization;
+﻿// --------------------------------------------------------------------------------------------------------------------
+// <copyright file="BackupDashboardController.cs" company="Sitecore A/S">
+//   Copyright (C) 2010 by Sitecore A/S
+// </copyright>
+// --------------------------------------------------------------------------------------------------------------------
 
 namespace AzureDashboard.Controllers
 {
-    public class BackupDashboardController : Controller
+  using System.Configuration;
+  using System.Web.Mvc;
+  using System.Web.Script.Serialization;
+  using AzureDashboard.Models;
+  using Microsoft.Practices.Unity;
+
+  /// <summary>
+  ///   The backup dashboard controller.
+  /// </summary>
+  public class BackupDashboardController : Controller
+  {
+    private IDashbordRepository repository;
+
+    public BackupDashboardController(IDashbordRepository repository)
     {
-        const string ReportPeriodKey = "dashboard:reporting_period";
-        const string DefaultReportPeriodKey = "dashboard:DefaultReportPeriod"; 
-        const int defaultReportPeriod = 3;
-
-        public int ReportingPeriod 
-        {
-            get 
-            {
-                int result;
-
-                if (TempData[ReportPeriodKey] is int)
-                {
-                    return (int)TempData[ReportPeriodKey];
-                }
-
-                if (int.TryParse(ConfigurationManager.AppSettings[DefaultReportPeriodKey], out result))
-                {
-                    TempData[ReportPeriodKey] = result;
-                    TempData.Keep(ReportPeriodKey);
-                    return result;
-                }
-
-                return defaultReportPeriod;
-            }
-
-            set 
-            {
-                TempData[ReportPeriodKey] = value;
-                TempData.Keep(ReportPeriodKey);
-            }
-        
-        }
-
-
-        //
-        // GET: /BackupDashboard/
-        public ActionResult Index()
-        {
-
-            var data = new DashbordRepository().FormReport(this.ReportingPeriod);
-
-            ViewBag.ReportData = new JavaScriptSerializer().Serialize(data); 
-
-            var dailyData = new DashbordRepository().FormReport(24 * 7);
-
-            ViewBag.DailyReportData = new JavaScriptSerializer().Serialize(dailyData); ;
-
-            ViewBag.ReportPeriodInfo = string.Format("LAST {0} {1} ", data.Statistics.Length, data.PeriodType == AvailabilityData.PeriodTypeEnum.Day ? "DAYS" : "HOURS");
-
-            return View();
-        }
-
-
-
-        public JsonResult GetData(int periodInHours)
-        {
-            return Json(new DashbordRepository().FormReport(periodInHours), JsonRequestBehavior.AllowGet);
-        }
-
-        
-
+      this.repository = repository;
     }
+
+    #region Constants
+
+    /// <summary>
+    ///   The default report period key.
+    /// </summary>
+    private const string DefaultReportPeriodKey = "dashboard:DefaultReportPeriod";
+
+    /// <summary>
+    ///   The report period key.
+    /// </summary>
+    private const string ReportPeriodKey = "dashboard:reporting_period";
+
+    /// <summary>
+    ///   The default report period.
+    /// </summary>
+    private const int defaultReportPeriod = 3;
+
+    #endregion
+
+    #region Public properties
+
+    /// <summary>
+    ///   Gets or sets the reporting period.
+    ///   It stores data into Temp data to share it across requests so we are ready to implement reporting period switcher on
+    ///   client side.
+    /// </summary>
+    public int ReportingPeriod
+    {
+      get
+      {
+        int result;
+
+        if (this.TempData[ReportPeriodKey] is int)
+        {
+          return (int)this.TempData[ReportPeriodKey];
+        }
+
+        if (int.TryParse(ConfigurationManager.AppSettings[DefaultReportPeriodKey], out result))
+        {
+          this.TempData[ReportPeriodKey] = result;
+          this.TempData.Keep(ReportPeriodKey);
+          return result;
+        }
+
+        return defaultReportPeriod;
+      }
+
+      set
+      {
+        this.TempData[ReportPeriodKey] = value;
+        this.TempData.Keep(ReportPeriodKey);
+      }
+    }
+
+    #endregion
+
+    #region Public methods
+
+    /// <summary>
+    /// The get data.
+    /// </summary>
+    /// <param name="periodInHours">
+    /// The period in hours.
+    /// </param>
+    /// <returns>
+    /// The <see cref="JsonResult"/>.
+    /// </returns>
+    [HttpPost]
+    public JsonResult GetReportData(int periodInHours)
+    {
+      return this.Json(repository.FormReport(periodInHours));
+    }
+
+    /// <summary>
+    ///   Index rendering.
+    /// </summary>
+    /// <returns>
+    ///   The action result instance <see cref="ActionResult" />.
+    /// </returns>
+    public ActionResult Index()
+    {
+      AvailabilityData data = repository.FormReport(this.ReportingPeriod);
+
+      this.ViewBag.ReportData = new JavaScriptSerializer().Serialize(data);
+
+      AvailabilityData dailyData = repository.FormReport(24 * 7);
+
+      this.ViewBag.DailyReportData = new JavaScriptSerializer().Serialize(dailyData);
+
+
+      this.ViewBag.ReportPeriodInfo = string.Format("LAST {0} {1} ", data.Statistics.Length, data.PeriodType == AvailabilityData.PeriodTypeEnum.Day ? "DAYS" : "HOURS");
+
+      return this.View();
+    }
+
+    /// <summary>
+    /// The set report period.
+    /// </summary>
+    /// <param name="periodInHours">
+    /// The period in hours.
+    /// </param>
+    [HttpPost]
+    public void SetReportPeriod(int periodInHours)
+    {
+      this.ReportingPeriod = periodInHours;
+    }
+
+    #endregion
+  }
 }

@@ -1,7 +1,12 @@
-﻿$.prototype.chart = function (items, gridOptions, container, barRenderer) {
+﻿
+// this script renders chart
+// by default it will be enough to pass array of values, and grid options 
+// example:  $('.chart').chart(last7days.Statistics, { gridSize: 100 });
+
+$.prototype.chart = function (items, gridOptions, container, barRenderer) {
     var self = this;
 
-    // helper function for elements creation - expect it works fuster, but it looks much better if I use something like this $('<div class="average"></div>')
+    // helper function for elements creation - expect it works faster, but it looks much better if I use something like this $('<div class="average"></div>')
     var createElement = function (elmName, className) {
         var elm = $(document.createElement(elmName));
         if (className) {
@@ -16,50 +21,49 @@
 
         var bar = createElement('div', 'chart_bar_content');
         // this element will hide part of bar from up to down 
-        // so it won't be necessary to allign element vertically 
+        // so it won't be necessary to align element vertically 
         bar.css("height", (100 - renderItem.relativeValue) + "%");
 
         chartBar.append(bar);
-        chart.append(chartBar)
+        chart.append(chartBar);
     };
 
-    var render_Chart = function (items, gridOptions, container, barRenderer) {
+    var render_Chart = function (items, gridOptions, container, renderer) {
 
         // data fluctuations can be very small, that is why we need do some calculations to show the chart as something meaningful 
         var minItemValue = Math.min.apply(null, items);
-        gridOptions.baseline = minItemValue - minItemValue / 10;
 
-        var getRelativeAmplifiedValue = function (value, gridOptions) {
-            // this function calculate drawing size of each bur according to incoming value
-            var relVal = value / gridOptions.gridSize;
-            var relBaseLine = (gridOptions.baseline / gridOptions.gridSize);
+        // minimum is taken on 1% lesser to make minimum value noticeable on chart
+        minItemValue = minItemValue - minItemValue / 100;
 
-            return 100 * (relVal - relBaseLine) / (1 - relBaseLine);
-        }
+        var max = gridOptions.gridSize - minItemValue;
 
-        var getRenderringItems = function (items, gridOptions) {
+        var getRenderringItems = function (renderingItems) {
             // here we prepare rendering objects which contains real and drawing value
-            // and potentially will contatin information about this point such as labels, grid values, notations.
+            // and potentially will contain information about this point such as labels, grid values, notations.
             var result = [];
 
-            items.forEach(function (val) {
-                var relative = getRelativeAmplifiedValue(val, gridOptions);
+            renderingItems.forEach(function (val) {
+                // calculating drawing size in percents of each bur according to incoming value
+                // to reflect small fluctuations on chart - the delta is showing 
+                var relative = 100 * (val - minItemValue) / max;
+
                 result.push({ relativeValue: relative, value: val });
             });
 
             return result;
         }
 
-        renderingItems = getRenderringItems(items, gridOptions);
+        var renderingItems = getRenderringItems(items, gridOptions);
 
         var chartContainer = createElement('div', 'chart_container');
 
         $(container).append(chartContainer);
 
-        renderingItems.forEach(function (val) {
+        renderingItems.forEach(function(val) {
             // render bar 
-            barRenderer(chartContainer, val);
-        })
+            renderer(chartContainer, val);
+        });
     };
 
     if (!container) {
@@ -71,6 +75,6 @@
     }
 
     // start chart rendering 
-    render_Chart(items, gridOptions, container, barRenderer)
+    render_Chart(items, gridOptions, container, barRenderer);
 };
 

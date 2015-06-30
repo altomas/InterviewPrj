@@ -5,17 +5,15 @@
     margin: 50px;
 }
 
-.title {
-    text-align: left;
+.left {
+    display: inline-block;
+    vertical-align:top;
 }
 
-.title .left {
-    float: left;
-}
-
-.title .right {
-    float: right;
+ .right {
+     display: inline-block;
     font-size: smaller;
+    vertical-align:top;
 }
 
 .average {
@@ -30,8 +28,8 @@
 
 .currentState {
     font-size:smaller;
-    border: solid 1px grey;
-    border-top: solid 0px grey;
+    border: solid 1px #ccc;
+    border-top: 0;
 }
 
 .currentState span {
@@ -39,8 +37,8 @@
 }
 
 .dailyReport {
-   border: solid 1px grey;
-   border-top: solid 0px grey;
+   border: solid 1px  #ccc;
+   border-top: 0;
    
 }
 
@@ -60,17 +58,17 @@
     Example: adding  .less_then_50 { color: blue; } means all percents in dasboard with value less or equal 50 will be blue. 
 }
 */
-.less_then_100 {
+.less_then_100_00 {
     color: green;
     text-decoration:underline;
 }
 
-.less_then_70 {
+.less_then_99_50 {
     color: orange;
     text-decoration:underline;
 }
 
-.less_then_40 {
+.less_then_99_00 {
     color: red;
    text-decoration:underline;
 }
