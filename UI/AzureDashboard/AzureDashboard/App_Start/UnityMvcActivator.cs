@@ -15,11 +15,6 @@ namespace AzureDashboard.App_Start
         /// <summary>Integrates Unity when the application starts.</summary>
         public static void Start() 
         {
-          //var container = new UnityContainer();
-          //container.LoadConfiguration();
-
-          //DependencyResolver.SetResolver(new UnityDependencyResolver(container));
-
             var container = UnityConfig.GetConfiguredContainer();
 
             FilterProviders.Providers.Remove(FilterProviders.Providers.OfType<FilterAttributeFilterProvider>().First());
