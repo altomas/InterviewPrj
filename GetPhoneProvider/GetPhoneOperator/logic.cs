@@ -20,7 +20,7 @@ namespace GetPhoneOperator
         public string  GetOperatorName(long number)
         {
 
-            long code = number / (long)Math.Pow(10, shift);
+            long code = number / Convert.ToInt32(Math.Pow(10, shift));
 
             return operatorsDictionary[(int)code];
 

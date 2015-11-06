@@ -20,9 +20,6 @@ using System.Collections.Generic;
         {8044, "ground line"}
         });
 
-
-
-
         [TestMethod]
         public void Test()
         {
@@ -47,27 +44,26 @@ using System.Collections.Generic;
         [TestMethod]
         public void PerformanceTest()
         {
-            var str = "Test";
-
-
-            for (int i = 0; i < 100000; i++)
-            {
-                str += " Test";
-            }
-
-            RunWithMeasuring(() => { logic.GetOperatorName(80634997252); });
+            RunWithMeasuring(() => { logic.GetOperatorName(80634997252); }, 100000);
         }
 
-        public static void RunWithMeasuring(Action actionToRun)
+        public static void RunWithMeasuring(Action actionToRun, int runTimes)
         {
-            Console.WriteLine();
             Stopwatch sw = new Stopwatch();
 
             sw.Start();
-            actionToRun();
+
+            for (int i = 0; i < runTimes; i++)
+            {
+                actionToRun();
+            }
+            
+            
             sw.Stop();
 
-            Console.WriteLine(string.Format("{0}: execution time: {1} ticks", actionToRun.Method.Name, sw.ElapsedTicks));
+            Console.WriteLine("Test");
+
+            Console.WriteLine(string.Format("{0}: execution time: {1} ticks", actionToRun.Method.Name, (double)sw.ElapsedTicks / runTimes));
         }
     }
 }
