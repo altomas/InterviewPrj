@@ -1,8 +1,6 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio Express 2013 for Web
-VisualStudioVersion = 12.0.31101.0
-MinimumVisualStudioVersion = 10.0.40219.1
+# Visual Studio 2012
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DuplicatesInArray", "DuplicatesInArray\DuplicatesInArray.csproj", "{455B7AC2-3053-47C1-858F-164A25F9ACA3}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MaximumSubArraySum", "MaximumSubArraySum\MaximumSubArraySum.csproj", "{D9F87B59-68E1-44FC-BF5B-51794E619B8D}"
@@ -32,6 +30,12 @@ EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "QuickSort", "QuickSort", "{27F8EC7B-7D44-44E2-9592-86A976309F41}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "QuickSortAlgAndTests", "QuickSortAlgAndTests\QuickSortAlgAndTests.csproj", "{BBD6E58C-FA26-4659-BFA5-878F0AEA47C0}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "GetCellOperator", "GetCellOperator", "{84EE5603-C952-4D4A-919C-157AE0BCDD18}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GetPhoneOperator", "GetPhoneProvider\GetPhoneOperator\GetPhoneOperator.csproj", "{B9B57FC3-AE2E-43CA-9CD6-74C0F6A2B627}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PhoneOperatorTest", "GetPhoneProvider\PhoneOperatorTest\PhoneOperatorTest.csproj", "{2CCDDCD8-DC55-40B6-9BA1-4A4C8594C3BF}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -83,6 +87,14 @@ Global
 		{23C6B9F2-7FEC-4475-B030-C10D0B3F1A41}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{23C6B9F2-7FEC-4475-B030-C10D0B3F1A41}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{23C6B9F2-7FEC-4475-B030-C10D0B3F1A41}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B9B57FC3-AE2E-43CA-9CD6-74C0F6A2B627}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B9B57FC3-AE2E-43CA-9CD6-74C0F6A2B627}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B9B57FC3-AE2E-43CA-9CD6-74C0F6A2B627}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B9B57FC3-AE2E-43CA-9CD6-74C0F6A2B627}.Release|Any CPU.Build.0 = Release|Any CPU
+		{2CCDDCD8-DC55-40B6-9BA1-4A4C8594C3BF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2CCDDCD8-DC55-40B6-9BA1-4A4C8594C3BF}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2CCDDCD8-DC55-40B6-9BA1-4A4C8594C3BF}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2CCDDCD8-DC55-40B6-9BA1-4A4C8594C3BF}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -91,5 +103,7 @@ Global
 		{6ACED2A9-EBEF-45C1-BD7D-9B8275B06F48} = {22CC073A-2BC8-4838-90B9-32F49FDD6568}
 		{FF04F7F2-D84B-4D5F-A5F1-9003E3E610FD} = {22CC073A-2BC8-4838-90B9-32F49FDD6568}
 		{BBD6E58C-FA26-4659-BFA5-878F0AEA47C0} = {27F8EC7B-7D44-44E2-9592-86A976309F41}
+		{B9B57FC3-AE2E-43CA-9CD6-74C0F6A2B627} = {84EE5603-C952-4D4A-919C-157AE0BCDD18}
+		{2CCDDCD8-DC55-40B6-9BA1-4A4C8594C3BF} = {84EE5603-C952-4D4A-919C-157AE0BCDD18}
 	EndGlobalSection
 EndGlobal
