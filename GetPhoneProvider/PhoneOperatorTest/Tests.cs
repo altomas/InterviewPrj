@@ -20,13 +20,6 @@ using System.Collections.Generic;
         {8044, "ground line"}
         });
 
-        logic2 logic2 = new logic2(new Dictionary<int, string>() {
-        {8063, "life"},
-        {8098, "kievstar"},
-        {8066, "mts"},
-        {8091, "utel"},
-        {8044, "ground line"}
-        });
 
 
 
@@ -41,27 +34,6 @@ using System.Collections.Generic;
               new {logic = logic, arg = 80664997252,  res = "mts"},
               new {logic = logic, arg = 80914997252,  res = "utel"},
               new {logic = logic, arg = 80444997252,  res = "ground line"},
-                };
-
-
-            cases.ToList().ForEach((val) =>
-            {
-                Assert.AreEqual(val.res, val.logic.GetOperatorName(val.arg));
-            });
-
-        }
-
-        [TestMethod]
-        public void TestLogic2()
-        {
-
-            // Initialize
-            var cases = new[] { 
-              new {logic = logic2, arg = 80634997252,  res = "life"},
-              new {logic = logic2, arg = 80984997252,  res = "kievstar"},
-              new {logic = logic2, arg = 80664997252,  res = "mts"},
-              new {logic = logic2, arg = 80914997252,  res = "utel"},
-              new {logic = logic2, arg = 80444997252,  res = "ground line"},
                 };
 
 
