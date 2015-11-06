@@ -37,8 +37,6 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GetPhoneOperator", "GetPhon
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PhoneOperatorTest", "GetPhoneProvider\PhoneOperatorTest\PhoneOperatorTest.csproj", "{2CCDDCD8-DC55-40B6-9BA1-4A4C8594C3BF}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ConsoleApplication1", "ConsoleApplication1\ConsoleApplication1.csproj", "{5D2E100E-3D54-4CE2-BA2F-460DF1030C2C}"
-EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -97,10 +95,6 @@ Global
 		{2CCDDCD8-DC55-40B6-9BA1-4A4C8594C3BF}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{2CCDDCD8-DC55-40B6-9BA1-4A4C8594C3BF}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{2CCDDCD8-DC55-40B6-9BA1-4A4C8594C3BF}.Release|Any CPU.Build.0 = Release|Any CPU
-		{5D2E100E-3D54-4CE2-BA2F-460DF1030C2C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{5D2E100E-3D54-4CE2-BA2F-460DF1030C2C}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{5D2E100E-3D54-4CE2-BA2F-460DF1030C2C}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{5D2E100E-3D54-4CE2-BA2F-460DF1030C2C}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -111,6 +105,5 @@ Global
 		{BBD6E58C-FA26-4659-BFA5-878F0AEA47C0} = {27F8EC7B-7D44-44E2-9592-86A976309F41}
 		{B9B57FC3-AE2E-43CA-9CD6-74C0F6A2B627} = {84EE5603-C952-4D4A-919C-157AE0BCDD18}
 		{2CCDDCD8-DC55-40B6-9BA1-4A4C8594C3BF} = {84EE5603-C952-4D4A-919C-157AE0BCDD18}
-		{5D2E100E-3D54-4CE2-BA2F-460DF1030C2C} = {84EE5603-C952-4D4A-919C-157AE0BCDD18}
 	EndGlobalSection
 EndGlobal
