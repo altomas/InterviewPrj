@@ -7,6 +7,8 @@
 // </summary>
 // --------------------------------------------------------------------------------------------------------------------
 
+using System.Collections.Generic;
+
 namespace DuplicatesInArray
 {
   using System;
@@ -46,9 +48,16 @@ namespace DuplicatesInArray
 
       // spoil the array
       this.underTest[N / 2 - 1] = N / 2 - 1;
+
+        this.Shuffle(this.underTest);
     }
 
-    #endregion
+      private void Shuffle(int[] ints)
+      {
+          throw new NotImplementedException();
+      }
+
+      #endregion
 
     #region Public Methods and Operators
 
@@ -107,6 +116,26 @@ namespace DuplicatesInArray
       // Complexity of this algorithm  will be N*Log(N) + N  what is less effective then first but does not have troubles with variable overflow. 
     }
 
-    #endregion
-  }
+        public void Method3()
+        {
+            Console.WriteLine("The array contains duplicates: ");
+            for (int i = 0; i < this.underTest.Length - 1; i++)
+            {
+                var index = Math.Abs(this.underTest[i]);
+                var elmInIndex = this.underTest[index];
+                if (elmInIndex > 0)
+                {
+                    //was visited first time
+                    this.underTest[index] = -this.underTest[index];
+                    continue;
+                }
+
+                Console.WriteLine(index);
+            }
+
+            // Complexity of this algorithm is O(N) space O(1)
+            // disadvantage : it mutes the array
+        }
+        #endregion
+    }
 }

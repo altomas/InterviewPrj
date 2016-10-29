@@ -10,16 +10,16 @@ namespace DuplicatesInArray
 
   class Program
   {
-    static void Main(string[] args)
-    {
-      var underTest = new FindDuplicatesFixture(100000);
+      private static void Main(string[] args)
+      {
+          var underTest = new FindDuplicatesFixture(100000);
 
-      RunWithMeasuring(underTest.Method1);
-      RunWithMeasuring(underTest.Method2);
+          RunWithMeasuring(underTest.Method1);
+          RunWithMeasuring(underTest.Method2);
+          RunWithMeasuring(underTest.Method3);
+      }
 
-    }
-
-    public static void RunWithMeasuring(Action actionToRun)
+      public static void RunWithMeasuring(Action actionToRun)
     {
       Stopwatch sw = new Stopwatch();
 
