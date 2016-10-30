@@ -20,9 +20,12 @@ void Main()
 	// what if there are only 0s?
 	// what if there are 2 or more the same sequences which to return?
 	
-	var array = new int[]{0,0,0,1,0,1,1,1,0,0,1,1,1,1,0,1};
+	// Test cases:
+	//var array = new int[]{0,0,0,1,0,1,1,1,0,0,1,1,1,1,0,1};
+	//var array = new int[]{1,1,1,1,0,1,1,1,0,0,1,1,1,1,0,1};
+	var array = new int[]{0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0};
 	
-	int k = 4;
+	int k = 3;
 	
 	int startIndex = 0;
 	int sequence = 0;
@@ -54,7 +57,7 @@ void Main()
 		
 		if(sum == 0)
 		{
-			// step over 0s, we haven't fased any 1s yet 
+			// step over 0s, we haven't faced any 1s yet 
 			index++;
 			continue;
 		}
@@ -83,6 +86,13 @@ void Main()
 		startIndex = pivot;
 		sequence = endPivot - pivot + 1;
 		sequenceSum = sum;
+	}
+	
+	if(sequenceSum == 0)
+	{
+		// No 1s in array
+		startIndex = -1;
+		sequence = 0;
 	}
 		
 	Console.WriteLine("startIndex: " + startIndex);
