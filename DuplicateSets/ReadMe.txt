@@ -3,6 +3,7 @@
 
 Applicant: Oleksand Zaslon
 Position .Net developer
+Time of development : 3h in total
 
 Deployment:
 
