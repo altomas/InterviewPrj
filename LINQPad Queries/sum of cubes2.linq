@@ -31,7 +31,10 @@ void Main()
 					{
 						var t = new Tuple<int,int,int,int>(a, b, c, d);
 					  res.Add(t);
+					  break;
 					}
+					
+					
 				}
 			}
 		}
@@ -43,5 +46,3 @@ void Main()
 int Cube(int val){
 return val * val * val;
 }
-
-

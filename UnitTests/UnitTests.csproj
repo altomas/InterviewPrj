@@ -70,9 +70,9 @@
       <Project>{0deecb92-e832-43f6-931f-8aec6b27c390}</Project>
       <Name>DrawCircleWithoutFloatComputations</Name>
     </ProjectReference>
-    <ProjectReference Include="..\DuplicatesInArray\DuplicatesInArray.csproj">
+    <ProjectReference Include="..\DuplicatesInArray\MaxSumInArray.csproj">
       <Project>{455b7ac2-3053-47c1-858f-164a25f9aca3}</Project>
-      <Name>DuplicatesInArray</Name>
+      <Name>MaxSumInArray</Name>
     </ProjectReference>
   </ItemGroup>
   <Choose>

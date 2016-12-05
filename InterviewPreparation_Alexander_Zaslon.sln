@@ -1,7 +1,9 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 2012
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DuplicatesInArray", "DuplicatesInArray\DuplicatesInArray.csproj", "{455B7AC2-3053-47C1-858F-164A25F9ACA3}"
+# Visual Studio 14
+VisualStudioVersion = 14.0.25420.1
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MaxSumInArray", "DuplicatesInArray\MaxSumInArray.csproj", "{455B7AC2-3053-47C1-858F-164A25F9ACA3}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MaximumSubArraySum", "MaximumSubArraySum\MaximumSubArraySum.csproj", "{D9F87B59-68E1-44FC-BF5B-51794E619B8D}"
 EndProject
