@@ -46,7 +46,6 @@
     <Compile Include="MemmorySetsStorageProvider.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Reporting\SimpleConsoleReporting.cs" />
-    <Compile Include="ReportOptions.cs" />
     <Compile Include="SetsStatistics.cs" />
     <Compile Include="SetStorage.cs" />
   </ItemGroup>

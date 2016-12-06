@@ -1,13 +1,20 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
+﻿
 namespace DuplicateSets.Reporting
 {
+    using System;
+    using System.Linq;
+
+    /// <summary>
+    /// Simple console reporting
+    /// </summary>
+    /// <seealso cref="DuplicateSets.ISetStorageVisitor" />
     public class SimpleConsoleReporting : ISetStorageVisitor
     {
+        /// <summary>
+        /// Accepts the specified set storage and build report.
+        /// </summary>
+        /// <typeparam name="T"></typeparam>
+        /// <param name="setStorage">The set storage.</param>
         public void Accept<T>(SetStorage<T> setStorage)
         {
             Console.WriteLine("Total :" + setStorage.Statistics.Total);
@@ -29,7 +36,6 @@ namespace DuplicateSets.Reporting
             {
                 Console.WriteLine(set);
             }
-
         }
     }
 }
